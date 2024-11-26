@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:batterymonitor/state/appState.dart';
-import 'package:batterymonitor/widgets/bottomMenuBar/tabItem.dart';
-import 'package:provider/provider.dart';
 import '../customWidgets.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:batterymonitor/ui/theme/theme.dart';
+import 'package:batterymonitor/state/appState.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:batterymonitor/widgets/bottomMenuBar/tabItem.dart';
 
 class BottomMenubar extends StatefulWidget {
   const BottomMenubar({super.key});
@@ -66,13 +66,10 @@ class _BottomMenubarState extends State<BottomMenubar> {
                       padding: EdgeInsets.only(left: 15),
                       child: Row(
                         children: [
-                          Icon(
-                            FontAwesomeIcons.plus,
-                            color: Colors.black,
-                          ),
+                          Icon(FontAwesomeIcons.plus, color: Colors.black),
                           SizedBox(width: 15),
                           Text(
-                            "Take a New Reading",
+                            "Register a New Device",
                             style: GoogleFonts.montserrat(
                               fontSize: 17.5,
                               color: Colors.black,
@@ -96,9 +93,7 @@ class _BottomMenubarState extends State<BottomMenubar> {
   }
 
   Widget _iconList() {
-    var state = Provider.of<AppState>(
-      context,
-    );
+    var state = Provider.of<AppState>(context, listen: false);
     return Container(
       height: 60,
       decoration: BoxDecoration(color: Colors.white),
@@ -111,11 +106,11 @@ class _BottomMenubarState extends State<BottomMenubar> {
           backgroundColor: AppColor.primary,
           child: customIcon(
             context,
-            icon: FontAwesomeIcons.plus,
-            isIcon: true,
-            iconColor: Colors.white,
             size: 25,
+            isIcon: true,
             paddingIcon: 3,
+            iconColor: Colors.white,
+            icon: FontAwesomeIcons.plus,
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -157,9 +152,7 @@ class _BottomMenubarState extends State<BottomMenubar> {
     } else {
       assert(iconData != null);
     }
-    var state = Provider.of<AppState>(
-      context,
-    );
+    var state = Provider.of<AppState>(context, listen: false);
     return Expanded(
       child: SizedBox(
         height: double.infinity,

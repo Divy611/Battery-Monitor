@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:batterymonitor/ui/pages/common/chart.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import 'package:batterymonitor/ui/pages/common/header.dart';
 import 'package:batterymonitor/ui/pages/common/sidebar.dart';
 
@@ -17,23 +17,16 @@ class _HomeState extends State<Home> {
       drawer: SideBar(),
       appBar: Header(title: 'Welcome, User!'),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 10),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              readingTile(context, 'Current Heart Rate', '80bpm'),
-              SizedBox(height: 10),
-              readingTile(context, 'Previous Reading', '94bpm')
-            ],
-          ),
-        ),
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+        child: SingleChildScrollView(child: readingTile(context)),
       ),
     );
   }
 
-  Widget readingTile(BuildContext context, String title, String reading) {
+  Widget readingTile(BuildContext context) {
+    int percent = 64;
     return Container(
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.all(17.5),
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height / 3,
       decoration: BoxDecoration(
@@ -46,18 +39,33 @@ class _HomeState extends State<Home> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(title, style: GoogleFonts.montserrat(fontSize: 17)),
               Text(
-                reading,
+                'Car 1',
                 style: GoogleFonts.montserrat(
                   fontSize: 25,
                   fontWeight: FontWeight.w600,
                 ),
-              )
+              ),
+              Text('', style: GoogleFonts.montserrat(fontSize: 17)),
             ],
           ),
-          SizedBox(height: 10),
-          Expanded(child: LineChartSample())
+          SizedBox(height: 50),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(),
+                CircularPercentIndicator(
+                  radius: 65,
+                  lineWidth: 5,
+                  percent: percent / 100,
+                  progressColor: Colors.green.shade700,
+                  center: Text('${percent.toString()} %'),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

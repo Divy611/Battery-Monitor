@@ -37,9 +37,7 @@ class _SideBarState extends State<SideBar> {
           _logOut();
           Navigator.push(
             context,
-            MaterialPageRoute(
-              builder: ((context) => WelcomePage()),
-            ),
+            MaterialPageRoute(builder: ((context) => WelcomePage())),
           );
         },
       );
@@ -51,8 +49,8 @@ class _SideBarState extends State<SideBar> {
           children: <Widget>[
             SizedBox(height: 15),
             Container(
-              height: 57,
               width: 57,
+              height: 57,
               margin: EdgeInsets.only(left: 17, top: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(27),
@@ -82,9 +80,7 @@ class _SideBarState extends State<SideBar> {
                         fontSize: 20,
                       ),
                     ),
-                    SizedBox(
-                      width: 3,
-                    ),
+                    SizedBox(width: 3),
                     state.userModel!.isVerified ?? false
                         ? customIcon(
                             context,
@@ -103,30 +99,6 @@ class _SideBarState extends State<SideBar> {
                 style: TextStyles.onPrimarySubTitleText.copyWith(
                   fontSize: 15,
                   color: AppColor.darkGrey,
-                ),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(left: 20),
-              child: GestureDetector(
-                onTap: () {
-                  //var state = context.read<AuthState>();
-                  //Navigator.push(
-                  //  context,
-                  //  ProfilePage.getRoute(profileId: state.userId),
-                  //);
-                },
-                child: Row(
-                  children: [
-                    Text(
-                      "View Profile",
-                      style: GoogleFonts.montserrat(fontSize: 17),
-                    ),
-                    Icon(
-                      FontAwesomeIcons.chevronRight,
-                      size: 15,
-                    )
-                  ],
                 ),
               ),
             ),
@@ -176,25 +148,7 @@ class _SideBarState extends State<SideBar> {
           Row(
             children: <Widget>[
               SizedBox(width: 10, height: 45),
-              Spacer(),
-              TextButton(
-                onPressed: () {
-                  //Navigator.push(
-                  //  context,
-                  //  ScanScreen.getRoute(
-                  //    context.read<AuthState>().profileUserModel!,
-                  //  ),
-                  //);
-                },
-                child: Image.asset(
-                  "assets/qr.png",
-                  height: 25,
-                ),
-              ),
-              SizedBox(
-                width: 0,
-                height: 45,
-              ),
+              SizedBox(width: 0, height: 45),
             ],
           ),
         ],
@@ -221,23 +175,10 @@ class _SideBarState extends State<SideBar> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(),
-              child: ListView(
-                physics: BouncingScrollPhysics(),
+              child: Column(
                 children: <Widget>[
                   Container(child: _menuHeader()),
-                  SizedBox(height: 30),
-                  _menuListRowButton(
-                    'Saved Readings',
-                    icon: FontAwesomeIcons.bookmark,
-                    isEnable: true,
-                    onPressed: () {
-                      //Navigator.push(
-                      //  context,
-                      //  BookmarkPage.getRoute(),
-                      //);
-                    },
-                  ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 75),
                   _menuListRowButton(
                     'Premium',
                     icon: FontAwesomeIcons.boltLightning,
@@ -246,7 +187,7 @@ class _SideBarState extends State<SideBar> {
                       _navigateTo('Premium');
                     },
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 15),
                   _menuListRowButton(
                     'Help Center',
                     icon: FontAwesomeIcons.handshake,
@@ -255,7 +196,7 @@ class _SideBarState extends State<SideBar> {
                       _navigateTo('Help');
                     },
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 15),
                   _menuListRowButton(
                     'Settings and privacy',
                     icon: FontAwesomeIcons.gear,
@@ -264,12 +205,12 @@ class _SideBarState extends State<SideBar> {
                       _navigateTo('SettingsAndPrivacyPage');
                     },
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 15),
                   _menuListRowButton(
                     'Logout',
-                    icon: FontAwesomeIcons.arrowRightFromBracket,
-                    onPressed: _logOut,
                     isEnable: true,
+                    onPressed: _logOut,
+                    icon: FontAwesomeIcons.arrowRightFromBracket,
                   ),
                 ],
               ),
