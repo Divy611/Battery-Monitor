@@ -18,13 +18,22 @@ class _HomeState extends State<Home> {
       appBar: Header(title: 'Welcome, User!'),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-        child: SingleChildScrollView(child: readingTile(context)),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              readingTile(context, 'Battery', 0.64, Colors.green.shade700),
+              readingTile(
+                  context, 'Charge Cycles', 0.90, Colors.green.shade700),
+              readingTile(context, 'Temparature', 0.95, Colors.red.shade700),
+            ],
+          ),
+        ),
       ),
     );
   }
 
-  Widget readingTile(BuildContext context) {
-    int percent = 64;
+  Widget readingTile(
+      BuildContext context, String title, double percent, Color colour) {
     return Container(
       padding: EdgeInsets.all(17.5),
       width: MediaQuery.of(context).size.width,
@@ -40,7 +49,7 @@ class _HomeState extends State<Home> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Car 1',
+                title,
                 style: GoogleFonts.montserrat(
                   fontSize: 25,
                   fontWeight: FontWeight.w600,
@@ -59,9 +68,9 @@ class _HomeState extends State<Home> {
                 CircularPercentIndicator(
                   radius: 65,
                   lineWidth: 5,
-                  percent: percent / 100,
-                  progressColor: Colors.green.shade700,
-                  center: Text('${percent.toString()} %'),
+                  percent: percent,
+                  progressColor: colour,
+                  center: Text((percent * 100).toString()),
                 ),
               ],
             ),

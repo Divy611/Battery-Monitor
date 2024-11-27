@@ -48,7 +48,7 @@ class _SplashPageState extends State<SplashPage> {
               ),
               SizedBox(width: 15),
               Text(
-                'Heart Monitor',
+                'Battery Monitor',
                 style: GoogleFonts.montserrat(
                   fontSize: 23,
                   fontWeight: FontWeight.w600,

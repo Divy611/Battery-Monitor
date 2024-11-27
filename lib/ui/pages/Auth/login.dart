@@ -186,8 +186,11 @@ class _LogInState extends State<LogIn> {
         context, _emailController.text, _passwordController.text);
     if (isValid) {
       state
-          .signIn(_emailController.text, _passwordController.text,
-              context: context)
+          .signIn(
+        _emailController.text,
+        _passwordController.text,
+        context: context,
+      )
           .then(
         (status) {
           if (state.user != null) {

@@ -48,7 +48,7 @@ class CustomLoader {
   buildLoader(BuildContext context, {Color? backgroundColor}) {
     backgroundColor ??= const Color(0xffa8a8a8).withOpacity(.5);
     var height = 150.0;
-    var text = "Heart Monitor";
+    var text = "Battery Monitor";
     return CustomScreenLoader(
       height: height,
       width: height,
@@ -68,7 +68,7 @@ class CustomScreenLoader extends StatelessWidget {
     this.backgroundColor = const Color(0xfff8f8f8),
     this.height = 30,
     this.width = 30,
-    this.text = "Heart Monitor",
+    this.text = "Battery Monitor",
   });
   @override
   Widget build(BuildContext context) {
@@ -100,7 +100,7 @@ class CustomScreenLoader extends StatelessWidget {
                 width: 20,
               ),
               Text(
-                'Heart Monitor',
+                'Battery Monitor',
                 style: GoogleFonts.montserrat(
                   fontSize: 23,
                   fontWeight: FontWeight.w600,
